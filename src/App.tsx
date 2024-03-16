@@ -5,13 +5,16 @@ import { Toaster } from "sonner";
 import { router } from "./routes";
 
 import "./global.css";
+import { ThemeProvider } from "./components/theme/theme-provider";
 
 export function App() {
   return (
     <HelmetProvider>
-      <Helmet titleTemplate="%s | Pizza Shop" />
-      <Toaster richColors closeButton />
-      <RouterProvider router={router} />
+      <ThemeProvider storageKey="pizzashop-theme" defaultTheme="dark">
+        <Helmet titleTemplate="%s | Pizza Shop" />
+        <Toaster richColors closeButton />
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </HelmetProvider>
   );
 }
